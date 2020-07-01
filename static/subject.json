@@ -1,0 +1,35 @@
+[
+    {
+        "id" : "1",
+        "title" : "TOC"
+    },
+    {
+        "id" : "2",
+        "title" : "IST"
+    },
+    {
+        "id" : "3",
+        "title" : "SW DEV"
+    },
+    {
+        "id" : "4",
+        "title" : "SW ARCH"
+    },
+    {
+        "id" : "5",
+        "title" : "DIGITAL"
+    },
+
+    {
+        "id" : "6",
+        "title" : "COM ENG"
+    },
+    {
+        "id" : "7",
+        "title" : "UX UI"
+    },
+    {
+        "id" : "8",
+        "title" : "SW STU"
+    }
+]

@@ -1,14 +1,21 @@
 <template>
-<div>
     <div>
-    <v-text-field v-model="sub_id" label="subject's id" :rules="rules" hide-details="auto" ></v-text-field>
-    <v-text-field v-model="sub_name" label="subject's name" :rules="rules" hide-details="auto" ></v-text-field>
-    <v-text-field v-model="sub_teacher" label="teacher" :rules="rules" hide-details="auto" ></v-text-field>
-    <v-text-field v-model="sub_start" label="date start" :rules="rules" hide-details="auto" ></v-text-field>
-    <v-text-field v-model="sub_stop" label="date stop" :rules="rules" hide-details="auto" ></v-text-field>
-    <v-btn style="margin-top:1em" @click="postSubmit()"> Save </v-btn>
-  </div>
-</div>
+        <form method = "POST">
+            <v-text-field v-model="teacher_name" name="teacher_name" label="teacher name"  hide-details="auto" ></v-text-field>
+            <v-text-field v-model="created_by" name="created_by" label="subject name"  hide-details="auto" ></v-text-field>
+            <v-text-field v-model="subject_name" name="subject_name" label="teacher name"  hide-details="auto" ></v-text-field>
+            <v-text-field v-model="subject_id" name="subject_id" label="subject id"  hide-details="auto" ></v-text-field>
+            <v-text-field v-model="start_time" name="start_time" label="start time"  hide-details="auto" ></v-text-field>
+            <v-text-field v-model="end_time" name="end_time" label="stop time"  hide-details="auto" ></v-text-field>
+            <v-text-field type="number" v-model="easy" name="easy" label="easy"  hide-details="auto" ></v-text-field>
+            <v-text-field type="number" v-model="medium" name="medium" label="medium"  hide-details="auto" ></v-text-field>
+            <v-text-field type="number" v-model="hard" name="hard" label="hard"  hide-details="auto" ></v-text-field>
+            <v-text-field type="number" v-model="backward" name="backward" label="backward"  hide-details="auto" ></v-text-field>
+            <v-text-field type="number" v-model="scoring_method" name="scoring_method" label="scoring method"  hide-details="auto" ></v-text-field>
+            <v-text-field type="number" v-model="show_score" name="show_score" label="show score"  hide-details="auto" ></v-text-field>
+            <v-btn style="margin-top:1em" @click="postSubmit()"> Save </v-btn>
+        </form>
+    </div>
 </template>
 
 <script>
@@ -18,21 +25,40 @@ export default {
     layout:'header',
     data() {
         return {
-            sub_id:'',
-            sub_name:'',
-            sub_teacher:'',
-            sub_start:null,
-            sub_stop:null
+            teacher_name:'',
+            created_by:'',
+            subject_name:'',
+            subject_id:'',
+            start_time:'',
+            end_time:'',
+            easy:0,
+            medium:0,
+            hard:0,
+            backward:0,
+            scoring_method:0,
+            show_score:0
         }
     },
-    postSubmit() {
-        axios.post('http://127.0.0.1:8000/InsertSubject', {
-            sub_id:this.sub_id,
-            sub_name:this.sub_name,
-            sub_teacher:this.sub_teacher,
-            sub_start:this.sub_start,
-            sub_stop:this.sub_stop
-        }).then(response => {})
+    methods: {
+        async postSubmit() {
+            await axios.post('http://127.0.0.1:8000/InsertSubject' ,{
+            teacher_name:this.teacher_name,
+            created_by:this.created_by,
+            subject_name:this.subject_name,
+            subject_id:this.subject_id,
+            start_time:this.start_time,
+            end_time:this.end_time,
+            easy:this.easy,
+            medium:this.medium,
+            hard:this.hard,
+            backward:this.backward,
+            scoring_method:this.scoring_method,
+            show_score:this.show_score
+            })
+            .then((res) => console.log(res.data))
+            .catch((err) => console.log(err))
+            console.log('posted')
+        }
     }
 }
 </script>       

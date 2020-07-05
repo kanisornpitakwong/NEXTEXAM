@@ -4,11 +4,11 @@
         <div v-for="data in datas" :key="data.id" class="col-sm-6 col-lg-3">
             <div class="card">
                 <div clsss="card-body">
-                    <h1 class="title"> {{ data.sub_name }} </h1>
-                    <h3> {{ data.sub_id }} </h3>
-                    <h3> {{ data.sub_teacher }} </h3>
-                    <h3> {{ data.sub_start }} </h3>
-                    <h3> {{ data.sub_stop }} </h3>
+                    <h1 class="title"> {{ data.subject_name }} </h1>
+                    <h3> {{ data.subject_id }} </h3>
+                    <h3> {{ data.teacher_name }} </h3>
+                    <h3> {{ data.start_time }} </h3>
+                    <h3> {{ data.end_time }} </h3>
                 </div>
             </div>
         </div>
@@ -24,8 +24,6 @@
             </a>
         </div>
     </div>
-        
-
 </template>
 
 <script>
